@@ -9,7 +9,7 @@
         "dev": "NODE_ENV=developement nodemon index.js",
         "install:client": "cd ./client && npm install",
         "build:client": "cd ./client && npm run build",
-        "start": "npm install:client && npm run build:client && npm start"
+        "start": "npm run install:client && npm run build:client && npm start"
     },
     "author": "David Gvetadze",
     "license": "ISC",
