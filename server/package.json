@@ -6,7 +6,9 @@
   "scripts": {
     "test": "NODE_ENV=test jest --verbose --runInBand",
     "start": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=developement nodemon index.js"
+    "dev": "NODE_ENV=developement nodemon index.js",
+    "install:client": "cd ../client && npm install",
+    "build:client": "cd ../client && npm run build"
   },
   "author": "David Gvetadze",
   "license": "ISC",

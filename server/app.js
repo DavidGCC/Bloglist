@@ -31,6 +31,10 @@ if (process.env.NODE_ENV === 'test') {
     app.use('/api/test', testRouter)
 }
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('../client/build'))
+}
+
 app.use('/api/blogs', blogRouter);
 app.use('/api/users', userRouter);
 app.use('/api/login', loginRouter)
