@@ -80,7 +80,6 @@ describe('HTTP POST Method Tests', () => {
             author: 'somebody',
             url: 'anotherUrl',
         };
-
         await api
             .post('/api/blogs')
             .send(blog)
