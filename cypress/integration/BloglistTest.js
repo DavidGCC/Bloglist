@@ -1,14 +1,14 @@
 /// <reference types="Cypress" />
 describe('Default Test', () => {
     beforeEach(() => {
-        cy.request('POST', 'https://localhost:3001/api/test/reset')
+        cy.request('POST', 'http://localhost:3001/api/test/reset')
         const rootUser = {
             'username': 'admin',
             'name': 'admin',
             'password': 'admin'
         }
-        cy.request('POST', 'https://localhost:3001/api/users', rootUser)
-        cy.visit('http://localhost:3000')
+        cy.request('POST', 'http://localhost:3001/api/users', rootUser)
+        cy.visit('http://localhost:3001')
     })
     it('Page should show login page by default', () => {
         cy.get('form').should('contain', 'Username').and('contain', 'Password').get('button').should('have.text', 'Sign In')
@@ -58,7 +58,7 @@ describe('Default Test', () => {
                 'name': 'test',
                 'password': 'test'
             }
-            cy.request('POST', 'https://localhost:3001/api/users', newuser)
+            cy.request('POST', 'http://localhost:3001/api/users', newuser)
             cy.login('test', 'test')
             cy.get('[data-cy=blogLink]').click()
             cy.get('[data-cy=removeButton]').click()
@@ -79,11 +79,11 @@ describe('Default Test', () => {
                     'likes': 2,
                     'url': 'F'
                 }
-                cy.request('POST', 'https://localhost:3001/api/login', { 'username': 'admin', 'password': 'admin' }).then(({ body }) => {
+                cy.request('POST', 'http://localhost:3001/api/login', { 'username': 'admin', 'password': 'admin' }).then(({ body }) => {
                     localStorage.setItem('CU', JSON.stringify(body))
                     console.log(body)
                     cy.request({
-                        'url': 'https://localhost:3001/api/blogs',
+                        'url': 'http://localhost:3001/api/blogs',
                         'method': 'POST',
                         'body': blog2,
                         'headers': {
@@ -91,7 +91,7 @@ describe('Default Test', () => {
                         }
                     })
                     cy.request({
-                        'url': 'https://localhost:3001/api/blogs',
+                        'url': 'http://localhost:3001/api/blogs',
                         'method': 'POST',
                         'body': blog1,
                         'headers': {

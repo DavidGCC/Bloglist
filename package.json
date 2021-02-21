@@ -12,7 +12,9 @@
     "start": "npm run build-client && npm run start-prod",
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
-    "heroku-postbuild": "npm run install-client && npm run build-client"
+    "heroku-postbuild": "npm run install-client && npm run build-client",
+    "start-test": "NODE_ENV=test node index.js",
+    "cypress:run": "npx cypress run"
   },
   "author": "David Gvetadze",
   "license": "ISC",
