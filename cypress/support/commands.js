@@ -29,7 +29,6 @@ Cypress.Commands.add('login', (username, password) => {
     cy.get('[data-cy=loginButton]').click();
 });
 Cypress.Commands.add('createBlog', (title, author, url) => {
-    cy.contains('Create New Blog').click();
     cy.get('#titleInput').type(title);
     cy.get('#authorInput').type(author);
     cy.get('#urlInput').type(url);
