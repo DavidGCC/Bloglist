@@ -15,7 +15,6 @@ jobs:
   build_and_test:
     runs-on: ubuntu-18.04
     env:
-      LISTABLOG_MONGODB: ${{ secrets.LISTABLOG_MONGODB }}
       SECRET: ${{ secrets.SECRET }}
     steps:
       - name: checkout repository

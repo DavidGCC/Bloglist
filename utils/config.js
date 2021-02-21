@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { PORT } = process.env;
+const PORT = process.env.PORT || 3001;
 let { LISTABLOG_MONGODB: MONGODB_URL } = process.env;
 
 const TEST_MONGODB_URL = 'mongodb+srv://davidgvetadze:12345678devdatabase@blogs.vm2be.mongodb.net/blogs?retryWrites=true&w=majority';
