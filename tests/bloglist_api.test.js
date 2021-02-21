@@ -1,6 +1,6 @@
+const supertest = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../app');
-const supertest = require('supertest');
 const Blog = require('../models/blog');
 const User = require('../models/user');
 const testHelper = require('./test_helper');
@@ -12,6 +12,7 @@ beforeAll(async () => {
     await api.post('/api/users').send(testHelper.initialUsers[0]);
     const response = await api.post('/api/login').send({ username: 'root', password: 'password' });
     token = response.body.token;
+    jest.setTimeout(30000);
 });
 
 beforeEach(async () => {
@@ -38,7 +39,7 @@ describe('HTTP GET Method Tests', () => {
 
     test('blogs should have an id property', async () => {
         const response = await api.get('/api/blogs');
-        expect(response.body[0].id).toBeDefined();
+        response.body.forEach(blog => expect(blog.id).toBeDefined());
     });
 
     test('it should be possible to return single blog with id', async () => {

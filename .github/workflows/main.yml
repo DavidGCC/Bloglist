@@ -12,15 +12,26 @@ on:
       - synchronize
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-18.04
     steps:
       - name: checkout repository
         uses: actions/checkout@v2
       - name: setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: install packages
         run: npm install && cd client && npm install
+      - name: unit test with jest
+        run: npm run test
+      - name: lint code
+        run: npm run eslint
       - name: build frontend
         run: npm run build-client
+      - name: e2e test with cypress
+        uses: cypress-io/github-actions@v2
+        with:
+          command: npm run cypress:run
+          start: npm run start-test
+          wait-on: http://localhost:3001

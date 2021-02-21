@@ -5,9 +5,7 @@
     "jest/globals": true,
     "cypress/globals": true
   },
-  "extends": [
-    "plugin:react/recommended"
-  ],
+  "extends": [  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -20,6 +18,7 @@
   ],
   "rules": {
       "indent": ["error", 4],
-      "quotes": ["error", "single"]
+      "quotes": ["error", "single"],
+      "semi": "error"
   }
 }

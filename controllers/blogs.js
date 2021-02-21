@@ -44,7 +44,6 @@ router.post('/', async (request, response, next) => {
 
         await user.save();
         res.user = user;
-        console.log(res);
 
         response.json(res.toJSON());
     } catch (error) {
@@ -63,7 +62,6 @@ router.put('/:id', async (request, response, next) => {
             const res = await blogToUpdate.updateOne({ likes: body.likes });
             return response.json(res);
         } if (!token || !decodedToken) {
-            console.log(request.headers);
             return response.status(401).json({ error: 'token missing or invalid' });
         } if (blogToUpdate.user.toString() !== decodedToken.id) {
             return response.status(401).json({ error: 'you don\'t have the permission to perform specified action' });

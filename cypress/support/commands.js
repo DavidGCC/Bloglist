@@ -24,14 +24,14 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 Cypress.Commands.add('login', (username, password) => {
-    cy.get('#username').type(username)
-    cy.get('#password').type(password)
-    cy.get('[data-cy=loginButton]').click()
-})
+    cy.get('#username').type(username);
+    cy.get('#password').type(password);
+    cy.get('[data-cy=loginButton]').click();
+});
 Cypress.Commands.add('createBlog', (title, author, url) => {
-    cy.contains('Create New Blog').click()
-    cy.get('#titleInput').type(title)
-    cy.get('#authorInput').type(author)
-    cy.get('#urlInput').type(url)
-    cy.get('#createButton').click()
-})
+    cy.contains('Create New Blog').click();
+    cy.get('#titleInput').type(title);
+    cy.get('#authorInput').type(author);
+    cy.get('#urlInput').type(url);
+    cy.get('#createButton').click();
+});

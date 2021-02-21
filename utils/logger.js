@@ -1,4 +1,3 @@
-const fs = require('fs');
 
 const info = (...params) => {
     if (process.env.NODE_ENV !== 'test') {
