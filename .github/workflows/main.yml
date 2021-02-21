@@ -12,8 +12,8 @@ on:
       - synchronize
 
 jobs:
-  build_and_test:
-    runs-on: ubuntu-18.04
+  test:
+    runs-on: ubuntu-latest
     env:
       SECRET: ${{ secrets.SECRET }}
       TEST_MONGODB_URL: ${{ secrets.TEST_MONGODB_URL }}
@@ -32,11 +32,40 @@ jobs:
         run: npm run eslint
       - name: jest test
         run: npm run test
-      - name: build frontend
-        run: npm run build-client
       - name: e2e test with cypress
         uses: cypress-io/github-action@v2
         with:
           start: npm run start-test
           command: npm run cypress:run
           wait-on: http://localhost:3001
+      - name: build client
+        run: npm build-client
+  deploy_to_heroku:
+    if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
+    runs-on: ubuntu-latest
+    env:
+      SECRET: ${{ secrets.SECRET }}
+      TEST_MONGODB_URL: ${{ secrets.TEST_MONGODB_URL }}
+      PRODUCTION_MONGODB_URL: ${{ secrets.PRODUCTION_MONGODB_URL }}
+      DEV_MONGODB_URL: ${{ secrets.DEV_MONGODB_URL }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy to heroku
+        uses: akhileshns/heroku-deploy@v3.11.10
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "listablog"
+          heroku_email: "datog309@gmail.com"
+          healthcheck: "http://listablog.herokuapp.com/healthcheck"
+          checkstring: "works"
+          rollbackonhealthcheckfailed: true
+  tagging:
+    if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
