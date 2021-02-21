@@ -26,14 +26,12 @@ describe('Default Test', () => {
     describe('logged in user has some actions', () => {
         it('logged in user can create a new blog', () => {
             cy.login('admin', 'admin');
-            cy.contains('Create New Blog').click();
             cy.createBlog('A title', 'The Author', 'A link');
             cy.contains('A title by The Author');
         });
 
         it('logged in user can like a blog', () => {
             cy.login('admin', 'admin');
-            cy.contains('Create New Blog').click();
             cy.createBlog('A title', 'The Author', 'A link');
             cy.get('[data-cy=blogLink').click();
             cy.contains('Likes: 0');
