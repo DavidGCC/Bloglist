@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start-prod": "node index.js",
+    "start-prod": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=developement nodemon index.js",
     "install-client": "cd client && npm install",
     "build-client": "rm -rf build && cd client && npm run build && mv build ../",
