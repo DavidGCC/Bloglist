@@ -4,7 +4,7 @@
   "description": "blogpost application for fullstackopen",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_ENV=test jest --runInBand",
     "start-prod": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=developement nodemon index.js",
     "install-client": "cd client && npm install",

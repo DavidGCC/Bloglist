@@ -8,7 +8,6 @@ const testHelper = require('./test_helper');
 const api = supertest(app);
 let token = '';
 beforeAll(async () => {
-    mongoose.connect('http://localhost:27017');
     await User.deleteMany({});
     await api.post('/api/users').send(testHelper.initialUsers[0]);
     const response = await api.post('/api/login').send({ username: 'root', password: 'password' });
