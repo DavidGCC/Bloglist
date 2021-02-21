@@ -30,7 +30,7 @@ jobs:
       - name: build frontend
         run: npm run build-client
       - name: e2e test with cypress
-        uses: cypress-io/github-actions@v2
+        uses: cypress-io/github-action@v2
         with:
           command: npm run cypress:run
           start: npm run start-test
