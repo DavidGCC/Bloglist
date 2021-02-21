@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       SECRET: ${{ secrets.SECRET }}
+      TEST_MONGODB_URL: ${{ secrets.TEST_MONGODB_URL }}
+      PRODUCTION_MONGODB_URL: ${{ secrets.PRODUCTION_MONGODB_URL }}
+      DEV_MONGODB_URL: ${{ secrets.DEV_MONGODB_URL }}
     steps:
       - name: checkout repository
         uses: actions/checkout@v2
