@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { loginAction } from '../../reducers/userReducer'
-import { useDispatch } from 'react-redux'
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
-import Link from '@material-ui/core/Link'
-import Grid from '@material-ui/core/Grid'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
+import React, { useState } from 'react';
+import { loginAction } from '../../reducers/userReducer';
+import { useDispatch } from 'react-redux';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -32,21 +32,21 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
-}))
+}));
 const Login = () => {
-    const classes = useStyles()
-    const dispatch = useDispatch()
+    const classes = useStyles();
+    const dispatch = useDispatch();
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleNameChange = event => setUsername(event.target.value)
-    const handlePasswordChange = event => setPassword(event.target.value)
+    const handleNameChange = event => setUsername(event.target.value);
+    const handlePasswordChange = event => setPassword(event.target.value);
 
     const handleLogin = (event) => {
-        event.preventDefault()
-        dispatch(loginAction(username, password))
-    }
+        event.preventDefault();
+        dispatch(loginAction(username, password));
+    };
 
     return (
         <Container component='main' maxWidth='xs'>
@@ -114,7 +114,7 @@ const Login = () => {
                 </form>
             </div>
         </Container>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

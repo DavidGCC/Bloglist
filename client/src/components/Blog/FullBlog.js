@@ -1,43 +1,43 @@
-import React from 'react'
-import { likeBlogAction, deleteBlogAction, createCommentAction } from '../../reducers/blogsReducer'
-import { useDispatch, useSelector } from 'react-redux'
-import { useField } from '../../hooks/index'
-import { Link as RouterLink, useHistory } from 'react-router-dom'
-import Link from '@material-ui/core/Link'
-import { Typography, Button, TextField, Grid, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import ThumbUpIcon from '@material-ui/icons/ThumbUp'
-import PersonIcon from '@material-ui/icons/Person'
-import CommentIcon from '@material-ui/icons/Comment'
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-import AddCommentIcon from '@material-ui/icons/AddComment'
+import React from 'react';
+import { likeBlogAction, deleteBlogAction, createCommentAction } from '../../reducers/blogsReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { useField } from '../../hooks/index';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+import { Typography, Button, TextField, Grid, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import PersonIcon from '@material-ui/icons/Person';
+import CommentIcon from '@material-ui/icons/Comment';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import AddCommentIcon from '@material-ui/icons/AddComment';
 
 
 const useStyles = makeStyles({
     container: {
         textAlign: 'center'
     }
-})
+});
 
 
 const FullBlog = ({ blogId }) => {
-    const classes = useStyles()
-    const dispatch = useDispatch()
-    const blog = useSelector(state => state.blogs.find(blog => blog.id === blogId))
-    const comment = useField('text')
-    const history = useHistory()
+    const classes = useStyles();
+    const dispatch = useDispatch();
+    const blog = useSelector(state => state.blogs.find(blog => blog.id === blogId));
+    const comment = useField('text');
+    const history = useHistory();
 
-    const handleLike = blog => dispatch(likeBlogAction(blog))
+    const handleLike = blog => dispatch(likeBlogAction(blog));
     const handleDelete = blog => {
-        dispatch(deleteBlogAction(blog))
-        history.push('/')
-    }
+        dispatch(deleteBlogAction(blog));
+        history.push('/');
+    };
 
     const submitComment = async (event) => {
-        event.preventDefault()
-        dispatch(createCommentAction(comment.input.value, blog))
-        comment.reset()
-    }
+        event.preventDefault();
+        dispatch(createCommentAction(comment.input.value, blog));
+        comment.reset();
+    };
     if (blog) {
         return (
             <Grid container className={classes.container} spacing={5} justify='center'>
@@ -91,12 +91,12 @@ const FullBlog = ({ blogId }) => {
                     </List>
                 </Grid>
             </Grid>
-        )
+        );
     } else {
         return (
             <h3>Loading...</h3>
-        )
+        );
     }
-}
+};
 
-export default FullBlog
+export default FullBlog;

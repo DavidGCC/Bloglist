@@ -1,13 +1,13 @@
-import React from 'react'
-import { logoutAction } from '../../reducers/userReducer'
-import { useDispatch, useSelector } from 'react-redux'
-import propTypes from 'prop-types'
-import { Menu, MenuItem, IconButton, Typography, ListItemIcon, ListItemText } from '@material-ui/core'
-import { Link as RouterLink } from 'react-router-dom'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import PersonIcon from '@material-ui/icons/Person'
-import { makeStyles } from '@material-ui/core/styles'
+import React from 'react';
+import { logoutAction } from '../../reducers/userReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import propTypes from 'prop-types';
+import { Menu, MenuItem, IconButton, Typography, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Link as RouterLink } from 'react-router-dom';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import PersonIcon from '@material-ui/icons/Person';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     menu: {
@@ -16,26 +16,26 @@ const useStyles = makeStyles({
     bottomBorder: {
         borderBottom: '1px solid gray'
     }
-})
+});
 
 const Logout = () => {
-    const dispatch = useDispatch()
-    const classes = useStyles()
-    const user = useSelector(state => state.user)
-    const [anchorEl, setAnchorEl] = React.useState(null)
+    const dispatch = useDispatch();
+    const classes = useStyles();
+    const user = useSelector(state => state.user);
+    const [anchorEl, setAnchorEl] = React.useState(null);
     const handleLogout = (event) => {
-        event.preventDefault()
+        event.preventDefault();
         if (window.confirm('Are you sure you want to log out?')) {
-            dispatch(logoutAction(user.name))
+            dispatch(logoutAction(user.name));
         }
-    }
+    };
     const toggleMenu = event => {
         if (anchorEl === null) {
-            setAnchorEl(event.currentTarget)
+            setAnchorEl(event.currentTarget);
         } else {
-            setAnchorEl(null)
+            setAnchorEl(null);
         }
-    }
+    };
     return (
         <div>
             <IconButton data-cy="userIcon" onClick={toggleMenu} color='inherit'>
@@ -59,11 +59,11 @@ const Logout = () => {
                 </MenuItem>
             </Menu>
         </div>
-    )
-}
+    );
+};
 
 Logout.propTypes = {
     user: propTypes.object,
-}
+};
 
-export default Logout
+export default Logout;

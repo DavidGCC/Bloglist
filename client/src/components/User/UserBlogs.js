@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link as RouterLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { Typography, Container, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import LinkIcon from '@material-ui/icons/Link'
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Typography, Container, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import LinkIcon from '@material-ui/icons/Link';
 
 const useStlyes = makeStyles({
     listItem: {
@@ -16,16 +16,16 @@ const useStlyes = makeStyles({
         width: '60%',
         margin: '0 auto'
     }
-})
+});
 
 
 const Userblogs = ({ userId }) => {
-    const classes = useStlyes()
-    const user = useSelector(state => state.users.forEach(user => {
+    const classes = useStlyes();
+    const user = useSelector(state => state.users.find(user => {
         if (user.id === userId) {
-            return user
+            return user;
         }
-    }))
+    }));
     if (user) {
         return (
             <Container className={classes.container}>
@@ -46,15 +46,15 @@ const Userblogs = ({ userId }) => {
                                             {blog.title}
                                         </ListItemText>
                                     </ListItem>
-                                )
+                                );
                             })
                     }
                 </List>
             </Container>
-        )
+        );
     } else {
-        return <h2>Loading ...</h2>
+        return <h2>Loading ...</h2>;
     }
-}
+};
 
-export default Userblogs
+export default Userblogs;

@@ -1,5 +1,5 @@
-import React from 'react'
-import propTypes from 'prop-types'
+import React from 'react';
+import propTypes from 'prop-types';
 
 
 const CreateBlogField = ( { text, value, handleChange } ) => {
@@ -16,13 +16,13 @@ const CreateBlogField = ( { text, value, handleChange } ) => {
             </label>
             <br />
         </div>
-    )
-}
+    );
+};
 
 CreateBlogField.propTypes = {
     text: propTypes.string.isRequired,
     value: propTypes.string.isRequired,
     handleChange: propTypes.func.isRequired
-}
+};
 
-export default CreateBlogField
+export default CreateBlogField;

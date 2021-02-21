@@ -1,10 +1,10 @@
-import React from 'react'
-import propTypes from 'prop-types'
-import { Table, TableCell, TableContainer, TableBody, Paper, TableRow, TableHead, Typography, Grid } from '@material-ui/core'
-import CreateBlogForm from './CreateBlogForm'
-import { Link as RouterLink } from 'react-router-dom'
-import Link from '@material-ui/core/Link'
-import { makeStyles } from '@material-ui/core/styles'
+import React from 'react';
+import propTypes from 'prop-types';
+import { Table, TableCell, TableContainer, TableBody, Paper, TableRow, TableHead, Typography, Grid } from '@material-ui/core';
+import CreateBlogForm from './CreateBlogForm';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     columnHead: {
@@ -14,10 +14,10 @@ const useStyles = makeStyles({
         width: '80vw',
         margin: '0 auto'
     }
-})
+});
 
 const Blogs = ({ blogs }) => {
-    const classes = useStyles()
+    const classes = useStyles();
     return (
         <Grid container className={classes.grid} spacing={2} justify='center'>
             <Grid item lg={2}>
@@ -54,11 +54,11 @@ const Blogs = ({ blogs }) => {
                 </TableContainer>
             </Grid>
         </Grid>
-    )
-}
+    );
+};
 
 Blogs.propTypes = {
     blogs: propTypes.array.isRequired,
-}
+};
 
-export default Blogs
+export default Blogs;

@@ -14,7 +14,7 @@
     "sourceType": "module"
   },
   "plugins": [
-    "cypress", "jest"
+    "react"
   ],
   "rules": {
       "indent": ["error", 4],

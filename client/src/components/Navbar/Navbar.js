@@ -1,10 +1,10 @@
-import React from 'react'
-import Logout from '../Authentication/Logout'
-import { Link as RouterLink, useHistory } from 'react-router-dom'
-import Link from '@material-ui/core/Link'
-import { AppBar, Toolbar, IconButton, List, ListItem, ListItemText, Container } from '@material-ui/core'
-import { Home } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/core/styles'
+import React from 'react';
+import Logout from '../Authentication/Logout';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+import { AppBar, Toolbar, IconButton, List, ListItem, ListItemText, Container } from '@material-ui/core';
+import { Home } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     navDisplayFlex: {
@@ -27,15 +27,15 @@ const useStyles = makeStyles({
         justifyContent: 'space-between',
         alignItems: 'center'
     }
-})
+});
 
 const Navbar = () => {
-    const history = useHistory()
-    const classes = useStyles()
+    const history = useHistory();
+    const classes = useStyles();
     const navLinks = [
         { 'title': 'Blogs', 'path': '/' },
         { 'title': 'Users', 'path': '/users' }
-    ]
+    ];
     return (
         <AppBar position='sticky' className={classes.appContainer}>
             <Toolbar>
@@ -56,7 +56,7 @@ const Navbar = () => {
                 </Container>
             </Toolbar>
         </AppBar>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;
