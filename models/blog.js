@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 
-
 const blogSchema = new mongoose.Schema({
-    title: {type: String, required: true},
+    title: { type: String, required: true },
     author: String,
-    url: {type: String, required: true},
+    url: { type: String, required: true },
     likes: Number,
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }
+        ref: 'User',
+    },
 });
 
 blogSchema.set('toJSON', {
@@ -18,7 +17,7 @@ blogSchema.set('toJSON', {
         obj.id = obj._id.toString();
         delete obj._id;
         delete obj.__v;
-    }
+    },
 });
 
 module.exports = mongoose.model('Blog', blogSchema);
