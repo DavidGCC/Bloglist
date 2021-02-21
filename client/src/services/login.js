@@ -7,4 +7,6 @@ const login = async (username, password) => {
     return res.data
 }
 
-export default { login }
+
+
+export default { login } //eslint-disable-line

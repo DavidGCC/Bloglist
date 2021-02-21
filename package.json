@@ -10,13 +10,14 @@
     "install-client": "cd client && npm install",
     "build-client": "rm -rf build && cd client && npm run build && mv build ../",
     "start": "npm run build-client && npm run start-prod",
-    "eslint": "./node_modules/.bin/eslint .",
-    "eslint:fix": "./node_modules/.bin/eslint . --fix",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
     "heroku-postbuild": "npm run install-client && npm run build-client"
   },
   "author": "David Gvetadze",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^6.5.0",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-cypress": "^2.11.2",

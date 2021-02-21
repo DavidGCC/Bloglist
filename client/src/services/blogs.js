@@ -49,5 +49,4 @@ const createComment = async (content, blog) => {
     const resonse = await axios.post(`${baseUrl}/${id}/comments`, { content })
     return resonse.data
 }
-
-export default { getAll, createBlog, setToken, like, deleteBlog, getBlog, createComment }
+export default { getAll, createBlog, setToken, like, deleteBlog, getBlog, createComment } //eslint-disable-line

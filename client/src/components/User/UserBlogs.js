@@ -21,7 +21,7 @@ const useStlyes = makeStyles({
 
 const Userblogs = ({ userId }) => {
     const classes = useStlyes()
-    const user = useSelector(state => state.users.find(user => {
+    const user = useSelector(state => state.users.forEach(user => {
         if (user.id === userId) {
             return user
         }

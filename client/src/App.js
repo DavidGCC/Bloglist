@@ -42,7 +42,7 @@ const App = () => {
         dispatch(initializeBlogsAction())
         dispatch(getAllUsers())
         dispatch(initializeUser())
-    }, [])
+    }, []) //eslint-disable-line
     const blogMatch = useRouteMatch('/blogs/:id')
     const blogId = blogMatch
         ? blogMatch.params.id

@@ -8,7 +8,6 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
-    "eslint-plugin-cypress": "^2.11.2",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -23,10 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "eslint": "eslint .",
-    "eslint:fix": "eslint --fix --ext .js,.jsx .",
-    "cypress:run": "./node_modules/.bin/cypress run"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,7 +44,6 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
-    "cypress": "^5.5.0",
-    "eslint-plugin-jest": "^24.1.0"
+    "cypress": "^5.5.0"
   }
 }

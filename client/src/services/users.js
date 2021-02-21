@@ -4,7 +4,7 @@ const baseUrl = '/api/users'
 const getAllUserData = async () => {
     const response = await axios.get(baseUrl)
     const userAndBlogCount = []
-    response.data.map(user => {
+    response.data.forEach(user => {
         let { name, blogs, id } = user
         userAndBlogCount.push({ name, blogCount: blogs.length, id })
     })
@@ -23,4 +23,4 @@ const getUsers = async () => {
 }
 
 
-export default { getAllUserData, getUserBlogs, getUsers }
+export default { getAllUserData, getUserBlogs, getUsers } //eslint-disable-line
