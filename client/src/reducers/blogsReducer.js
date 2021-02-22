@@ -19,9 +19,9 @@ export const createBlogAction = blog => {
                     type: 'CREATE',
                     response
                 });
-                dispatch(createSuccessMessage(`Created new blog ${blog.title} by ${blog.author}`));
+                dispatch(createSuccessMessage(`Created New Blog ${blog.title} by ${blog.author}`));
             })
-            .catch(err => dispatch(createErrorMessage(`Couldn't create blog. Title, Author and Url Fields are required. Message: ${err.message}`)));
+            .catch(err => dispatch(createErrorMessage(`Couldn't Create Blog. Title, Author and Url Fields are Required. Message: ${err.message}`)));
     };
 };
 
@@ -33,9 +33,9 @@ export const likeBlogAction = blog => {
                     type: 'LIKE',
                     id: blog.id
                 });
-                dispatch(createSuccessMessage(`Liked blog ${blog.title}.`));
+                dispatch(createSuccessMessage(`Liked Blog ${blog.title}.`));
             })
-            .catch(err => dispatch(createErrorMessage(`Couldn't like blog ${blog.title}. Message: ${err.response.data.error}`))            );
+            .catch(err => dispatch(createErrorMessage(`Couldn't Like Blog ${blog.title}. Message: ${err.response.data.error}`))            );
     };
 };
 
@@ -47,9 +47,9 @@ export const deleteBlogAction = blog => {
                     type: 'DELETE',
                     id: blog.id
                 });
-                dispatch(createSuccessMessage(`Successfully deleted blog ${blog.title} by ${blog.author}`));
+                dispatch(createSuccessMessage(`Successfully Deleted Blog ${blog.title} by ${blog.author}`));
             })
-            .catch(err => dispatch(createErrorMessage(`Couldn't delete blog ${blog.title}. Message: ${err.response.data.error}`)));
+            .catch(err => dispatch(createErrorMessage(`Couldn't Delete Blog ${blog.title}. Message: ${err.response.data.error}`)));
     };
 };
 
@@ -61,9 +61,9 @@ export const createCommentAction = (content, blog) => {
                     type: 'COMMENT',
                     comment
                 });
-                dispatch(createSuccessMessage('Successfully created a comment'));
+                dispatch(createSuccessMessage('Successfully Created a Comment'));
             })
-            .catch(err => dispatch(createErrorMessage(`Couldn't comment on this blog. Message: ${err.response.data.error}`)));
+            .catch(err => dispatch(createErrorMessage(`Couldn't Comment On This Blog. Message: ${err.response.data.error}`)));
     };
 };
 

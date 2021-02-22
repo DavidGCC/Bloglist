@@ -3,6 +3,7 @@ import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import { TextField, Button, Container, FormHelperText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
     container: {
@@ -37,6 +38,7 @@ const initialValues = {
 
 const RegisterForm = ({ handleSubmit }) => {
     const styles = useStyles();
+    const history = useHistory();
     return (
         <Formik
             validationSchema={validationSchema}
@@ -49,6 +51,7 @@ const RegisterForm = ({ handleSubmit }) => {
                 ({ handleSubmit, errors, touched, values, handleChange, setFieldTouched }) => {
                     return (
                         <Container>
+                            <FormHelperText error={Boolean(history.location.state?.message)}>{history.location.state?.message}</FormHelperText>
                             <TextField
                                 fullWidth
                                 id="name"
