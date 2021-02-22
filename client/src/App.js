@@ -14,6 +14,7 @@ import Login from './components/Authentication/Login';
 import Users from './components/User/Users';
 import Navbar from './components/Navbar/Navbar';
 import Notification from './components/Notification/Notification';
+import Register from './components/Authentication/register';
 
 // COMPONENT IMPORTS END
 
@@ -56,7 +57,16 @@ const App = () => {
             <Notification />
             {
                 user === null
-                    ? <Login />
+                    ? (
+                        <Switch>
+                            <Route exact path='/'>
+                                <Login />
+                            </Route>
+                            <Route path='/register'>
+                                <Register />
+                            </Route>
+                        </Switch>
+                    )
                     :
                     (
                         <>

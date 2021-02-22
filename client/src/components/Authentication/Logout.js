@@ -43,7 +43,7 @@ const Logout = () => {
             </IconButton>
             <Menu open={Boolean(anchorEl)} onClose={toggleMenu} anchorEl={anchorEl} className={classes.menu}>
                 <MenuItem className={classes.bottomBorder}>
-                    <Typography variant="p" component="p">{user.name} Logged In</Typography>
+                    <Typography component="p">{user.name} Logged In</Typography>
                 </MenuItem>
                 <MenuItem component={RouterLink} to={`/users/${user.id}`}>
                     <ListItemIcon>

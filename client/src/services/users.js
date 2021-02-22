@@ -22,5 +22,9 @@ const getUsers = async () => {
     return response.data;
 };
 
+const registerUser = async (credentials) => {
+    const response = await axios.post(baseUrl, credentials);
+    return response.data;
+};
 
-export default { getAllUserData, getUserBlogs, getUsers } //eslint-disable-line
+export default { getAllUserData, getUserBlogs, getUsers, registerUser } //eslint-disable-line
