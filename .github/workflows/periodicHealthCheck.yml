@@ -1,0 +1,16 @@
+name: Periodic healthcheck
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+
+jobs:
+  healthcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check deployed website 
+        uses: jtalk/url-health-check-action@1.4
+        with:
+          url: http://listablog.herokuapp.com/healthcheck
+          
