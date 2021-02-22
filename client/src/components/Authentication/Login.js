@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const [remember, setRemember] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
