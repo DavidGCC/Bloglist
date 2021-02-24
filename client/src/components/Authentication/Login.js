@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { loginAction } from '../../reducers/userReducer';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link as RouterLink } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -98,7 +98,7 @@ const Login = () => {
                     </Button>
                     <Grid container>
                         <Grid item>
-                            <Link href="/register" variant="body2">
+                            <Link to="/register" variant="body2" component={RouterLink}>
                                 {'Don\'t have an account? Sign Up'}
                             </Link>
                         </Grid>
