@@ -3,7 +3,7 @@ import { logoutAction } from '../../reducers/userReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 import { Menu, MenuItem, IconButton, Typography, ListItemIcon, ListItemText } from '@material-ui/core';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PersonIcon from '@material-ui/icons/Person';
@@ -21,12 +21,14 @@ const useStyles = makeStyles({
 const Logout = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
+    const history = useHistory();
     const user = useSelector(state => state.user);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleLogout = (event) => {
         event.preventDefault();
         if (window.confirm('Are you sure you want to log out?')) {
             dispatch(logoutAction(user.name));
+            history.replace('/');
         }
     };
     const toggleMenu = event => {

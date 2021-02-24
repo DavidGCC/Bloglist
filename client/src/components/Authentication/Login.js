@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { loginAction } from '../../reducers/userReducer';
 import { useDispatch } from 'react-redux';
-import { useHistory, Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -37,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [remember, setRemember] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
