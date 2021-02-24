@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useField } from '../../hooks/index';
 import { Link as RouterLink, useHistory } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
-import { Typography, Button, TextField, Grid, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Typography, Button, TextField, Grid, List, ListItem, ListItemIcon, ListItemText, FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import PersonIcon from '@material-ui/icons/Person';
@@ -63,20 +63,20 @@ const FullBlog = ({ blogId }) => {
                     </Typography>
                     <Button data-cy="removeButton" variant='contained' color='secondary' startIcon={<DeleteForeverIcon />} onClick={() => handleDelete(blog)}>Remove</Button>
                 </Grid>
-                <Grid container item lg={4} alignContent='center' justify='center'>
+                <Grid container item lg={4} alignContent='center' justify='center' direction="column">
                     <Typography variant='h3' component='h3' gutterBottom={true}>
                         Comments
                     </Typography>
-                    <form onSubmit={submitComment}>
+                    <FormControl>
                         <Grid container spacing={2} alignItems='flex-end'>
                             <Grid item>
                                 <TextField id="commentField" label="Add Comment" {...{ ...comment.input }} />
                             </Grid>
                             <Grid item>
-                                <Button variant='contained' color='primary' startIcon={<AddCommentIcon />}>Comment</Button>
+                                <Button type="submit" onClick={submitComment} variant='contained' color='primary' startIcon={<AddCommentIcon />}>Comment</Button>
                             </Grid>
                         </Grid>
-                    </form>
+                    </FormControl>
                     <List>
                         {blog.comments.map(comment => (
                             <ListItem key={comment.id}>
