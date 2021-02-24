@@ -47,7 +47,7 @@ const RegisterForm = ({ handleSubmit }) => {
                                 fullWidth
                                 id="name"
                                 name="name"
-                                label="Nickname"
+                                label="Nickname*"
                                 type="text"
                                 placeholder="Nickname"
                                 value={values.name}
@@ -62,7 +62,7 @@ const RegisterForm = ({ handleSubmit }) => {
                                 fullWidth
                                 id="username"
                                 name="username"
-                                label="Username"
+                                label="Username*"
                                 type="text"
                                 placeholder="Username"
                                 value={values.username}
@@ -77,7 +77,7 @@ const RegisterForm = ({ handleSubmit }) => {
                                 fullWidth
                                 id="password"
                                 name="password"
-                                label="Password"
+                                label="Password*"
                                 type="password"
                                 placeholder="Password"
                                 value={values.password}
@@ -92,7 +92,7 @@ const RegisterForm = ({ handleSubmit }) => {
                                 fullWidth
                                 id="confirmPassword"
                                 name="confirmPassword"
-                                label="Confirm Password"
+                                label="Confirm Password*"
                                 type="password"
                                 placeholder="Confirm Password"
                                 value={values.confirmPassword}
