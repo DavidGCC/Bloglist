@@ -16,7 +16,7 @@ describe('Default Test', () => {
     describe('login test', () => {
         it('only logs in with the correct user', () => {
             cy.login('admin', 'admin');
-            cy.contains('admin successfully logged in');
+            cy.contains('admin Successfully Logged In');
         });
         it('entering wrong information prints error', () => {
             cy.login('wrong', 'credentials');
@@ -44,7 +44,7 @@ describe('Default Test', () => {
             cy.contains('remove test');
             cy.get('[data-cy=blogLink]').click();
             cy.get('[data-cy=removeButton]').click();
-            cy.contains('Successfully deleted blog remove test by auth');
+            cy.contains('Successfully Deleted Blog remove test by auth');
         });
         it('logged in user can\'t delete a blog if he is not the owner', () => {
             cy.login('admin', 'admin');
@@ -61,7 +61,7 @@ describe('Default Test', () => {
             cy.get('[data-cy=blogLink]').click();
             cy.get('[data-cy=removeButton]').click();
             cy.contains('this will not be removed');
-            cy.contains('Couldn\'t delete blog this will not be removed. Message: you don\'t have the permission to perform specified action');
+            cy.contains('Couldn\'t Delete Blog this will not be removed. Message: you don\'t have the permission to perform specified action');
         });
         describe('showing blogs', () => {
             it('blogs are sorted based on likes', () => {
