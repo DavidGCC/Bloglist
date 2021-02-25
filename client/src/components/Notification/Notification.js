@@ -13,7 +13,7 @@ const Notification = () => {
 
     return (
         <Snackbar open={Boolean(message)} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={5000}>
-            <Alert severity={usage}>
+            <Alert data-cy='notification' severity={usage}>
                 {message}
             </Alert>
         </Snackbar>

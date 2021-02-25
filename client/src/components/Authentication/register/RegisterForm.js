@@ -89,6 +89,7 @@ const RegisterForm = ({ handleSubmit }) => {
                                         onBlur={() => setFieldTouched('name')}
                                         variant="outlined"
                                         margin="normal"
+                                        data-cy="name"
                                     />
                                     <TextField
                                         fullWidth
@@ -104,6 +105,7 @@ const RegisterForm = ({ handleSubmit }) => {
                                         onBlur={() => setFieldTouched('username')}
                                         variant="outlined"
                                         margin="normal"
+                                        data-cy="username"
                                     />
                                     <TextField
                                         fullWidth
@@ -119,6 +121,7 @@ const RegisterForm = ({ handleSubmit }) => {
                                         onBlur={() => setFieldTouched('password')}
                                         variant="outlined"
                                         margin="normal"
+                                        data-cy="password"
                                     />
                                     <TextField
                                         fullWidth
@@ -134,6 +137,7 @@ const RegisterForm = ({ handleSubmit }) => {
                                         onBlur={() => setFieldTouched('confirmPassword')}
                                         variant="outlined"
                                         margin="normal"
+                                        data-cy="confirmPassword"
                                     />
                                     <Button
                                         type="submit"
@@ -141,10 +145,14 @@ const RegisterForm = ({ handleSubmit }) => {
                                         color="primary"
                                         onClick={handleSubmit}
                                         className={classes.submit}
-                                        fullWidth>Sign Up</Button>
+                                        fullWidth
+                                        data-cy="registerButton"
+                                    >
+                                        Sign Up
+                                    </Button>
                                     <Grid container>
                                         <Grid item>
-                                            <Link to="/" variant="body1" component={RouterLink}>Already have an account? Sign In Instead</Link>
+                                            <Link to="/" variant="body1" component={RouterLink} data-cy="registerToLoginLink">Already have an account? Sign In Instead</Link>
                                         </Grid>
                                     </Grid>
                                 </form>
