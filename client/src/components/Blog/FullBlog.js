@@ -1,17 +1,16 @@
 import React from 'react';
-import { likeBlogAction, deleteBlogAction, createCommentAction } from '../../reducers/blogsReducer';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useField } from '../../hooks/index';
-import { Link as RouterLink, useHistory } from 'react-router-dom';
-import Link from '@material-ui/core/Link';
-import { Typography, Button, TextField, Grid, List, ListItem, ListItemIcon, ListItemText, FormControl } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import PersonIcon from '@material-ui/icons/Person';
-import CommentIcon from '@material-ui/icons/Comment';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import AddCommentIcon from '@material-ui/icons/AddComment';
 
+
+import { Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { useField } from '../../hooks/index';
+import { likeBlogAction, deleteBlogAction, createCommentAction } from '../../reducers/blogsReducer';
+
+import Comments from './Comments';
+import FullBlogDetails from './FullBlogDetails';
 
 const useStyles = makeStyles({
     container: {
@@ -28,6 +27,7 @@ const FullBlog = ({ blogId }) => {
     const history = useHistory();
 
     const handleLike = blog => dispatch(likeBlogAction(blog));
+
     const handleDelete = blog => {
         dispatch(deleteBlogAction(blog));
         history.push('/');
@@ -41,55 +41,8 @@ const FullBlog = ({ blogId }) => {
     if (blog) {
         return (
             <Grid container className={classes.container} spacing={5} justify='center'>
-                <Grid item lg={8}>
-                    <Typography component='h2' variant='h2' gutterBottom={true}>
-                        {blog.title}
-                    </Typography>
-                    <Typography component='h4' variant='h4'>
-                        Written by {blog.author}
-                    </Typography>
-                    <Typography>
-                        <b>Likes: </b> {blog.likes}
-                    </Typography>
-                    <Typography gutterBottom={true}>
-                        <Button data-cy="likeButton" variant='contained' color='primary' startIcon={<ThumbUpIcon />} onClick={() => handleLike(blog)}>Like</Button>
-                    </Typography>
-                    <Typography>
-                        <b>Added By User:</b>
-                        <Button component={RouterLink} to={`/users/${blog.user.id}`} startIcon={<PersonIcon />} variant='text' color='primary'>{blog.user.name}</Button>
-                    </Typography>
-                    <Typography variant='h6' paragraph={true}>
-                        <Link target='_blank' rel='noreferrer' href={blog.url}>View Full Blog</Link>
-                    </Typography>
-                    <Button data-cy="removeButton" variant='contained' color='secondary' startIcon={<DeleteForeverIcon />} onClick={() => handleDelete(blog)}>Remove</Button>
-                </Grid>
-                <Grid container item lg={4} alignContent='center' justify='center' direction="column">
-                    <Typography variant='h3' component='h3' gutterBottom={true}>
-                        Comments
-                    </Typography>
-                    <FormControl>
-                        <Grid container spacing={2} alignItems='flex-end'>
-                            <Grid item>
-                                <TextField id="commentField" label="Add Comment" {...{ ...comment.input }} />
-                            </Grid>
-                            <Grid item>
-                                <Button type="submit" onClick={submitComment} variant='contained' color='primary' startIcon={<AddCommentIcon />}>Comment</Button>
-                            </Grid>
-                        </Grid>
-                    </FormControl>
-                    <List>
-                        {blog.comments.map(comment => (
-                            <ListItem key={comment.id}>
-                                <ListItemIcon>
-                                    <CommentIcon />
-                                </ListItemIcon>
-                                <ListItemText>
-                                    {comment.content}
-                                </ListItemText>
-                            </ListItem>
-                        ))}
-                    </List>
-                </Grid>
+                <FullBlogDetails blog={blog} handleLike={handleLike} handleDelete={handleDelete} />
+                <Comments comments={blog.comments} comment={comment} submitComment={submitComment} />
             </Grid>
         );
     } else {
