@@ -1,5 +1,8 @@
+const path = require('path');
+
 const express = require('express');
 const blogRouter = require('./controllers/blogs');
+
 
 const app = express();
 const mongoose = require('mongoose');
@@ -30,16 +33,20 @@ app.use(middleware.requestLogger);
 
 app.use(express.static('build'));
 
+
 if (process.env.NODE_ENV === 'test') {
     app.use('/api/test', testRouter);
 }
-
-
 
 app.use('/api/blogs', blogRouter);
 app.use('/api/users', userRouter);
 app.use('/api/login', loginRouter);
 app.get('/healthcheck', (req, res) => res.send('works'));
+
+// FOR CLIENT-SIDE ROUTING
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
